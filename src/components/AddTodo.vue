@@ -8,23 +8,32 @@
 <script>
     export default {
         name: "AddTodo",
+        data() {
+            return {
+                /**
+                 * Тескт задачи
+                 */
+                title: ''
+            }
+        },
         methods: {
+            /**
+             * Создание задачи
+             */
             onSubmit(){
                 console.log('Submit', this.title);
                 if (this.title.trim()){
+                    // Создаем задачу
                     let newTodo = {
                         id: Date.now(),
                         title: this.title,
                         completed: false
                     };
+
+                    // Вызываем событие добавление задачи
                     this.$emit('add-todo', newTodo);
                     this.title = ''
                 }
-            }
-        },
-        data() {
-            return {
-                title: ''
             }
         }
     }
